@@ -1,30 +1,37 @@
 import streamlit as st
 from bokeh.models.widgets import Button
-from bokeh.events import ButtonClick
 from bokeh.models import CustomJS
 from streamlit_bokeh_events import streamlit_bokeh_events
 from io import StringIO
 import pandas as pd
 
+st.title("Klipp & lim Mch Code")
 
-copy_button = Button(label="Get Clipboard Data")
-copy_button.js_on_event(ButtonClick, CustomJS(code="""
-    navigator.clipboard.readText().then(text => document.dispatchEvent(new CustomEvent("GET_TEXT", {detail: text})))
-    """))
-result = streamlit_bokeh_events(
-    copy_button,
-    events="GET_TEXT",
-    key="get_text",
-    refresh_on_update=False,
-    override_height=75,
-    debounce_time=0)
+def main():
+    try:
+        copy_button = Button(label="Slå sammen Mch koder")
+        copy_button.js_on_event("button_click", CustomJS(code="""
+            navigator.clipboard.readText().then(text => document.dispatchEvent(new CustomEvent("GET_TEXT", {detail: text})))
+           """))
+        result = streamlit_bokeh_events(
+            copy_button,
+            events="GET_TEXT",
+            key="get_text",
+            refresh_on_update=False,
+            override_height=75,
+            debounce_time=0)
 
-st.write(result.get("GET_TEXT"))
+        if result:
+            if "GET_TEXT" in result:
+                df = pd.read_csv(StringIO(result.get("GET_TEXT")))
+                #txt = df['Mch Code']#';'.join(set(df['Mch Code'].apply(str)))
 
-if result:
-    if "GET_TEXT" in result:
-        df = pd.read_csv(StringIO(result.get("GET_TEXT")))
-        st.table(df)
+                txt = ';'.join(set(df['Mch Code'].apply(str)))
+               st.success(txt)
+                #st.text(txt)
+                st.table(df)
+    except KeyError as missing_column:
+        st.error(f'Følgende obligatorisk kolonne mangler: {missing_column}')
 
-
-
+if __name__ == "__main__":
+    main()
