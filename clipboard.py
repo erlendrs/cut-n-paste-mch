@@ -27,7 +27,7 @@ def main():
                 #txt = df['Mch Code']#';'.join(set(df['Mch Code'].apply(str)))
 
                 txt = ';'.join(set(df['Mch Code'].apply(str)))
-               st.success(txt)
+                st.success(txt)
                 #st.text(txt)
                 st.table(df)
     except KeyError as missing_column:
