@@ -26,7 +26,7 @@ def main():
                 df = pd.read_csv(StringIO(result.get("GET_TEXT")))
                 #txt = df['Mch Code']#';'.join(set(df['Mch Code'].apply(str)))
 
-                txt = ';'.join(set(df['Mch Code|Dokumentnummer'].apply(str)))
+                txt = ';'.join(set(df['Mch Code'].apply(str)))
                 st.success(txt)
                 #st.text(txt)
                 st.table(df)
