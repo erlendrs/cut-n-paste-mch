@@ -23,11 +23,13 @@ def main():
 
         if result:
             if "GET_TEXT" in result:
-                df = pd.read_csv(StringIO(result.get("GET_TEXT")))
+                df = pd.read_csv(StringIO(result.get("GET_TEXT")),names=['Mch Code'])
                 #txt = df['Mch Code']#';'.join(set(df['Mch Code'].apply(str)))
-
-                txt = ';'.join(set(df['Dokumentnummer'].apply(str)))
-                st.success(txt)
+                #txt = df.values.tolist()
+                values = ['Mch Code', 'Dokumentnummer']
+                df = df[df['Mch Code'].isin(values) == False]
+                merged_text = ';'.join(set(df['Mch Code'].apply(str)))
+                st.success(merged_text)
                 #st.text(txt)
                 st.table(df)
                 
