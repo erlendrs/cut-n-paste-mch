@@ -28,10 +28,9 @@ def main():
                 #txt = df.values.tolist()
                 values = ['Mch Code', 'Dokumentnummer']
                 df = df[df['Mch Code'].isin(values) == False]
-                merged_text = ';'.join(set(df['Mch Code'].apply(str)))
-                st.success(merged_text)
-                #st.text(txt)
-                st.table(df)
+                merged_str = ';'.join(set(df['Mch Code'].apply(str)))
+                st.success(merged_str)
+                
                 
     except KeyError as missing_column:
         st.error(f'Følgende obligatorisk kolonne mangler: {missing_column}')
