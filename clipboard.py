@@ -29,7 +29,8 @@ def main():
                 txt = ';'.join(set(df['Dokumentnummer'].apply(str)))
                 st.success(txt)
                 #st.text(txt)
-                st.table(df)
+                #st.table(df)
+                
     except KeyError as missing_column:
         st.error(f'Følgende obligatorisk kolonne mangler: {missing_column}')
 
