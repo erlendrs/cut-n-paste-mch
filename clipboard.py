@@ -24,10 +24,8 @@ def main():
         if result:
             if "GET_TEXT" in result:
                 df = pd.read_csv(StringIO(result.get("GET_TEXT")),names=['Mch Code'])
-                #txt = df['Mch Code']#';'.join(set(df['Mch Code'].apply(str)))
-                #txt = df.values.tolist()
-                values = ['Mch Code', 'Dokumentnummer']
-                df = df[df['Mch Code'].isin(values) == False]
+                columns = ['Mch Code', 'Dokumentnummer']
+                df = df[df['Mch Code'].isin(columns) == False]
                 merged_str = ';'.join(set(df['Mch Code'].apply(str)))
                 st.success(merged_str)
                 
