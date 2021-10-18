@@ -5,7 +5,11 @@ from streamlit_bokeh_events import streamlit_bokeh_events
 from io import StringIO
 import pandas as pd
 
+<<<<<<< HEAD
 st.title("Klipp & lim kolonne")
+=======
+st.title("Klipp & lim inn tekst")
+>>>>>>> alpha
 
 def main():
     try:
