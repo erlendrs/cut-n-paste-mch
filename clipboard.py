@@ -5,7 +5,7 @@ from streamlit_bokeh_events import streamlit_bokeh_events
 from io import StringIO
 import pandas as pd
 
-st.title("Klipp & lim Mch Code")
+st.title("Klipp & lim inn tekst")
 
 def main():
     try:
