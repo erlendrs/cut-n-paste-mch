@@ -29,12 +29,6 @@ def main():
                 df = df[df['Mch Code'].isin(values) == False]
                 merged_text = ';'.join(set(df['Mch Code'].apply(str)))
                 st.success(merged_text)
-                st.table(df)
-
-                columns = ['Mch Code', 'Mch Kode', 'Dokumentnummer']
-                df = df[df['Mch Code'].isin(columns) == False]
-                merged_str = ';'.join(set(df['Mch Code'].apply(str)))
-                st.success(merged_str)
 
                 
     except KeyError as missing_column:
