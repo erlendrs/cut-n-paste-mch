@@ -23,7 +23,7 @@ def main():
 
         if result:
             if "GET_TEXT" in result:
-                df = pd.read_csv(StringIO(result.get("GET_TEXT")),names=['Mch Code'])
+                df = pd.read_csv(StringIO(result.get("GET_TEXT")),) #names=['Mch Code'])
 
                 values = ['Mch Code', 'MchKode', 'Dokumentnummer']
                 df = df[df['Mch Code'].isin(values) == False]
