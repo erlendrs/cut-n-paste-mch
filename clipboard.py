@@ -30,6 +30,7 @@ def main():
                 merged_text = ';'.join(set(df['Header'].apply(str)))
                 st.success(merged_text)
 
+
                 
     except KeyError as missing_column:
         st.error(f'Følgende obligatorisk kolonne mangler: {missing_column}')
