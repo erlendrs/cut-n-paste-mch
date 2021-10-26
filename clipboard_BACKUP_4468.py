@@ -5,8 +5,11 @@ from streamlit_bokeh_events import streamlit_bokeh_events
 from io import StringIO
 import pandas as pd
 
-
+<<<<<<< HEAD
+st.title("Klipp & lim inn kolonne med tekst som skal slås sammen")
+=======
 st.title("Slå sammen tekst")
+>>>>>>> alpha
 
 def main():
     try:

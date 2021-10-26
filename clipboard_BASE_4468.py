@@ -5,8 +5,7 @@ from streamlit_bokeh_events import streamlit_bokeh_events
 from io import StringIO
 import pandas as pd
 
-
-st.title("Slå sammen tekst")
+st.title("Klipp & lim inn tekst")
 
 def main():
     try:
@@ -24,17 +23,22 @@ def main():
 
         if result:
             if "GET_TEXT" in result:
-                df = pd.read_csv(StringIO(result.get("GET_TEXT")), names=['Header'])
+                df = pd.read_csv(StringIO(result.get("GET_TEXT")),names=['Mch Code'])
 
                 values = ['Mch Code', 'MchKode', 'Dokumentnummer']
-                df = df[df['Heading'].isin(values) == False]
-                merged_text = ';'.join(set(df['Heading'].apply(str)))
+                df = df[df['Mch Code'].isin(values) == False]
+                merged_text = ';'.join(set(df['Mch Code'].apply(str)))
                 st.success(merged_text)
+                st.table(df)
 
+                columns = ['Mch Code', 'Mch Kode', 'Dokumentnummer']
+                df = df[df['Mch Code'].isin(columns) == False]
+                merged_str = ';'.join(set(df['Mch Code'].apply(str)))
+                st.success(merged_str)
 
+                
     except KeyError as missing_column:
         st.error(f'Følgende obligatorisk kolonne mangler: {missing_column}')
-
 
 if __name__ == "__main__":
     main()

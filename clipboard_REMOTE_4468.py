@@ -5,7 +5,6 @@ from streamlit_bokeh_events import streamlit_bokeh_events
 from io import StringIO
 import pandas as pd
 
-
 st.title("Slå sammen tekst")
 
 def main():
