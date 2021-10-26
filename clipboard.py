@@ -7,7 +7,6 @@ import pandas as pd
 
 st.title("Slå sammen tekst")
 
-
 def main():
     try:
         copy_button = Button(label="Slå sammen Mch koder")
@@ -30,7 +29,6 @@ def main():
                 df = df[df['Heading'].isin(values) == False]
                 merged_text = ';'.join(set(df['Heading'].apply(str)))
                 st.success(merged_text)
-
 
     except KeyError as missing_column:
         st.error(f'Følgende obligatorisk kolonne mangler: {missing_column}')
