@@ -26,7 +26,7 @@ def main():
             if "GET_TEXT" in result:
                 df = pd.read_csv(StringIO(result.get("GET_TEXT")), names=['Header'])
 
-                values = ['Mch Code', 'MchKode', 'Dokumentnummer']
+                values = ['Mch Code', 'MchKode', 'Sup Mch Code', 'Dokumentnummer']
                 df = df[df['Heading'].isin(values) == False]
                 merged_text = ';'.join(set(df['Heading'].apply(str)))
                 st.success(merged_text)
