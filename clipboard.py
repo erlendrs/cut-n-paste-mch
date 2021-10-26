@@ -26,12 +26,11 @@ def main():
                 df = pd.read_csv(StringIO(result.get("GET_TEXT")), names=['Header'])
 
                 values = ['Mch Code', 'MchKode', 'Dokumentnummer']
-                df = df[df['Header'].isin(values) == False]
-                merged_text = ';'.join(set(df['Header'].apply(str)))
+                df = df[df['Heading'].isin(values) == False]
+                merged_text = ';'.join(set(df['Heading'].apply(str)))
                 st.success(merged_text)
 
 
-                
     except KeyError as missing_column:
         st.error(f'Følgende obligatorisk kolonne mangler: {missing_column}')
 
