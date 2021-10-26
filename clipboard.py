@@ -8,6 +8,7 @@ import pandas as pd
 st.title("Slå sammen tekst")
 
 def main():
+
     try:
         copy_button = Button(label="Slå sammen Mch koder")
         copy_button.js_on_event("button_click", CustomJS(code="""
